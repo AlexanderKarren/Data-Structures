@@ -13,8 +13,8 @@ Stretch Goals:
  * AVL Trees
 
 ## Completion Requirements
- * [ ] Module 1: Implement the Stack and Queue classes using built-in Python lists and the Node and LinkedList classes you created during the Module 1 Guided Project.
- * [ ] Module 2: Implement the Doubly Linked List class
+ * [x] Module 1: Implement the Stack and Queue classes using built-in Python lists and the Node and LinkedList classes you created during the Module 1 Guided Project.
+ * [x] Module 2: Implement the Doubly Linked List class
  * [ ] Module 3: Implement the Binary Search Tree class
  * [ ] Module 4: Implement traversal methods on Binary Search Trees
  
