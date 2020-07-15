@@ -78,6 +78,7 @@ class LinkedList:
     def remove_tail(self):
         original_value = None
         if self.head is self.tail:  # one or fewer elements
+            print("only one element or fewer")
             if self.tail is None:
                 return original_value
             else:
@@ -85,7 +86,9 @@ class LinkedList:
                 self.head = None
                 self.tail = None
                 self.length = 0
+                return original_value
         else:
+            print("more than one element")
             current = self.head
 
             while (current.next is not self.tail):
@@ -94,6 +97,9 @@ class LinkedList:
             original_value = self.tail.value
             self.tail = current
             self.tail.next = None
+            self.length -= 1
+
+            return original_value
 
     def for_each(self, callback):
         pass
