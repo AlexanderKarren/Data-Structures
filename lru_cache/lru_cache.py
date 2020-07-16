@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +10,9 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.capacity = limit
+        self.size = 0
+        self.cache = OrderedDict()
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +22,11 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        if self.cache.get(key) is not None:
+            self.cache[key] = self.cache.pop(key)
+            return self.cache.get(key)
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +39,13 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if self.cache.get(key) is None:
+            print(key, "NOT IN THERE")
+            if len(self.cache) >= self.capacity:
+                print(key, "CAPACITY REACHED, EVICTING OLDEST ITEM")
+                self.cache.popitem(last=False)
+            self.cache[key] = value
+        else:
+            print(key, "ALREADY IN THERE")
+            self.cache.pop(key)
+            self.cache.update({key: value})
