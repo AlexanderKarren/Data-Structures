@@ -9,6 +9,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from collections import deque
 
 
 class BSTNode:
@@ -66,26 +67,68 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+    # Inorder Traversal
     def in_order_print(self, node):
-        pass
+        # climb down left subtree
+        if node.left is not None:
+            self.in_order_print(node.left)
+        print(node.value)
+        # climb down right subtree
+        if node.right is not None:
+            self.in_order_print(node.right)
+        return
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        if node is None:
+            return
+        queue = deque()
+        queue.append(node)
+        while len(queue) > 0:
+            current = queue[0]
+            print(current.value)
+            if current.left is not None:
+                queue.append(current.left)
+            if current.right is not None:
+                queue.append(current.right)
+            queue.popleft()
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        print(node.value)
+        # climb down right subtree
+        if node.right is not None:
+            self.dft_print(node.right)
+        # climb down left subtree
+        if node.left is not None:
+            self.dft_print(node.left)
+        return
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        # print root
+        print(node.value)
+        # climb down left subtree
+        if node.left is not None:
+            self.pre_order_dft(node.left)
+        # climb down right subtree
+        if node.right is not None:
+            self.pre_order_dft(node.right)
+        return
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        # climb down left subtree
+        if node.left is not None:
+            self.post_order_dft(node.left)
+        # climb down right subtree
+        if node.right is not None:
+            self.post_order_dft(node.right)
+        # print root
+        print(node.value)
+        return
