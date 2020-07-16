@@ -49,7 +49,9 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        if self.right is None:
+        if self is None:
+            return None
+        elif self.right is None:
             return self.value
         else:
             return self.right.get_max()
@@ -83,16 +85,16 @@ class BSTNode:
     def bft_print(self, node):
         if node is None:
             return
-        queue = deque()
-        queue.append(node)
-        while len(queue) > 0:
-            current = queue[0]
+        my_queue = deque()
+        my_queue.append(node)
+        while len(my_queue) > 0:
+            current = my_queue[0]
             print(current.value)
             if current.left is not None:
-                queue.append(current.left)
+                my_queue.append(current.left)
             if current.right is not None:
-                queue.append(current.right)
-            queue.popleft()
+                my_queue.append(current.right)
+            my_queue.popleft()
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
